@@ -15,7 +15,7 @@ import com.atik.librarymanagement.service.BookService;
 
 @Service
 public class BookServiceImpl implements BookService {
-	
+
 	@Autowired
 	private BookRepository repository;
 
@@ -23,15 +23,15 @@ public class BookServiceImpl implements BookService {
 	public HttpStatus create(Book book) throws IllegalArgumentException {
 
 		try {
-			
+
 			book.setId(UUID.randomUUID().toString());
-			
+
 			repository.save(book);
-			
+
 			return HttpStatus.CREATED;
-			
+
 		} catch (IllegalArgumentException e) {
-			
+
 			throw new IllegalArgumentException();
 		}
 	}
@@ -64,7 +64,7 @@ public class BookServiceImpl implements BookService {
 	public HttpStatus deleteBooks() {
 
 		repository.deleteAll();
-		
+
 		return HttpStatus.NO_CONTENT;
 	}
 
@@ -72,7 +72,7 @@ public class BookServiceImpl implements BookService {
 	public HttpStatus deleteBook(String id) {
 
 		repository.deleteById(id);
-		
+
 		return HttpStatus.NO_CONTENT;
 	}
 
@@ -84,10 +84,10 @@ public class BookServiceImpl implements BookService {
 			Book updateBook = getBook(book.getId());
 
 			if (Objects.nonNull(updateBook)) {
-				
+
 				if (Objects.nonNull(book.getName()))
 					updateBook.setName(book.getName());
-				
+
 				if (Objects.nonNull(book.getAuthor()))
 					updateBook.setAuthor(book.getAuthor());
 

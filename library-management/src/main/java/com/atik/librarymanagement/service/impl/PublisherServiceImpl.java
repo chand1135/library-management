@@ -23,9 +23,9 @@ public class PublisherServiceImpl implements PublisherService {
 	public HttpStatus create(List<Publisher> publishers) throws IllegalArgumentException {
 
 		try {
-			
+
 			publishers.stream().forEach(publisher -> {
-				
+
 				publisher.setId(UUID.randomUUID().toString());
 
 				repository.save(publisher);

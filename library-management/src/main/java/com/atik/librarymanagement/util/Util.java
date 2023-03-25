@@ -57,7 +57,7 @@ public class Util {
 		for (var i = 0; i < publishers.size(); i++) {
 
 			Publisher publisher = publishers.get(i);
-			
+
 			if (Objects.isNull(publisher))
 				return true;
 
@@ -70,17 +70,17 @@ public class Util {
 
 		return false;
 	}
-	
+
 	public boolean validatePublisher(Publisher publisher) {
 
-			if (Objects.isNull(publisher))
-				return true;
+		if (Objects.isNull(publisher))
+			return true;
 
-			if (Objects.isNull(publisher.getName()))
-				return true;
+		if (Objects.isNull(publisher.getName()))
+			return true;
 
-			if (Objects.isNull(publisher.getAddress()))
-				return true;
+		if (Objects.isNull(publisher.getAddress()))
+			return true;
 
 		return false;
 	}

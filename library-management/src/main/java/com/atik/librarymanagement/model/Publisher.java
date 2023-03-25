@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Document(collection = "publisher")
 public class Publisher {
-	
+
 	private String id;
 	private String name;
 	private String address;

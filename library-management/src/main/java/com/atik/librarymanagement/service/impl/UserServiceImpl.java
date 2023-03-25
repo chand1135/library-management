@@ -19,10 +19,10 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository repository;
 
-	public HttpStatus create(User user) throws IllegalArgumentException{
+	public HttpStatus create(User user) throws IllegalArgumentException {
 
 		try {
-			
+
 //			if (repository.existsById(user.getId()))
 //				return HttpStatus.CONFLICT;
 
@@ -43,17 +43,17 @@ public class UserServiceImpl implements UserService {
 		return repository.findAll();
 	}
 
-	public User getUser(String id) throws IllegalArgumentException{
+	public User getUser(String id) throws IllegalArgumentException {
 
 		try {
 
 			Optional<User> optional = repository.findById(id);
-			
-			if(optional.isPresent())
+
+			if (optional.isPresent())
 				return optional.get();
-			
+
 			return null;
-			
+
 		} catch (IllegalArgumentException e) {
 
 			throw new IllegalArgumentException();
@@ -74,10 +74,10 @@ public class UserServiceImpl implements UserService {
 		return HttpStatus.NO_CONTENT;
 	}
 
-	public HttpStatus update(User user) throws IllegalArgumentException{
+	public HttpStatus update(User user) throws IllegalArgumentException {
 
 		try {
-			
+
 			User updateUser = getUser(user.getId());
 
 			if (Objects.nonNull(updateUser)) {

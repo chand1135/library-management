@@ -23,7 +23,7 @@ public class UserController {
 
 	@Autowired
 	private UserService service;
-	
+
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody User user) {
 
@@ -36,13 +36,13 @@ public class UserController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 	@GetMapping
 	public ResponseEntity<?> getUsers() {
 
 		return ResponseEntity.ok(service.getUsers());
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getUser(@PathVariable String id) {
 
@@ -61,19 +61,19 @@ public class UserController {
 		}
 
 	}
-	
+
 	@DeleteMapping
 	public ResponseEntity<?> deleteUsers() {
 
 		return ResponseEntity.status(service.deleteUsers()).build();
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable String id) {
 
 		return ResponseEntity.status(service.deleteUser(id)).build();
 	}
-	
+
 	@PutMapping
 	public ResponseEntity<?> update(@RequestBody User user) {
 

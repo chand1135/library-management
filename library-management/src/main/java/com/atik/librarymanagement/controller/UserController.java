@@ -7,8 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +25,7 @@ public class UserController {
 	private UserService service;
 	
 	@PostMapping
-	public ResponseEntity<?> create(User user) {
+	public ResponseEntity<?> create(@RequestBody User user) {
 
 		try {
 
@@ -42,7 +44,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getUser(String id) {
+	public ResponseEntity<?> getUser(@PathVariable String id) {
 
 		try {
 
@@ -67,13 +69,13 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteUser(String id) {
+	public ResponseEntity<?> deleteUser(@PathVariable String id) {
 
 		return ResponseEntity.status(service.deleteUser(id)).build();
 	}
 	
 	@PutMapping
-	public ResponseEntity<?> update(User user) {
+	public ResponseEntity<?> update(@RequestBody User user) {
 
 		try {
 

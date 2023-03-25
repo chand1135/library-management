@@ -23,8 +23,8 @@ public class UserServiceImpl implements UserService {
 
 		try {
 			
-			if (repository.existsById(user.getId()))
-				return HttpStatus.CONFLICT;
+//			if (repository.existsById(user.getId()))
+//				return HttpStatus.CONFLICT;
 
 			user.setId(UUID.randomUUID().toString());
 

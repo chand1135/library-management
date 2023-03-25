@@ -24,7 +24,7 @@ public class UserController {
 
 	@Autowired
 	private UserService service;
-	
+
 	@Autowired
 	private Util util;
 
@@ -32,7 +32,7 @@ public class UserController {
 	public ResponseEntity<?> create(@RequestBody User user) {
 
 		try {
-			
+
 			if (util.validateUser(user))
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
@@ -85,7 +85,7 @@ public class UserController {
 	public ResponseEntity<?> update(@RequestBody User user) {
 
 		try {
-			
+
 			if (util.validateUser(user))
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 

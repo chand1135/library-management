@@ -8,12 +8,12 @@ import lombok.Data;
 @Data
 @Document(collection = "book")
 public class Book {
-	
+
 	@Id
 	private String id;
 	private String name;
 	private String author;
 	private String publication;
 	private int publicationYear;
-	
+
 }

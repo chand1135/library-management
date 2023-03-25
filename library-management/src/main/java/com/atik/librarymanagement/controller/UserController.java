@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atik.librarymanagement.model.User;
 import com.atik.librarymanagement.service.UserService;
+import com.atik.librarymanagement.util.Util;
 
 @RestController
 @RequestMapping(path = { "/api/v1/user" })
@@ -23,11 +24,17 @@ public class UserController {
 
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private Util util;
 
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody User user) {
 
 		try {
+			
+			if (util.validateUser(user))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
 			return ResponseEntity.status(service.create(user)).build();
 
@@ -78,6 +85,9 @@ public class UserController {
 	public ResponseEntity<?> update(@RequestBody User user) {
 
 		try {
+			
+			if (util.validateUser(user))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
 			return ResponseEntity.status(service.update(user)).build();
 

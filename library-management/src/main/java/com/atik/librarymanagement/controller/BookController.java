@@ -18,7 +18,7 @@ import com.atik.librarymanagement.model.Book;
 import com.atik.librarymanagement.service.BookService;
 
 @RestController
-@RequestMapping(path = { "/api/v1/user" })
+@RequestMapping(path = { "/api/v1/book" })
 public class BookController {
 
 	@Autowired
@@ -28,7 +28,22 @@ public class BookController {
 	public ResponseEntity<?> create(@RequestBody Book book) {
 
 		try {
-
+			
+			if(Objects.isNull(book)) //if (book !=null)    if(book==null)
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			
+			if(Objects.isNull(book.getName()))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			
+			if(Objects.isNull(book.getAuthor()))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			
+			if(Objects.isNull(book.getPublication()))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			
+			if(Objects.isNull(book.getPublicationYear()))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			
 			return ResponseEntity.status(service.create(book)).build();
 
 		} catch (IllegalArgumentException e) {
@@ -43,16 +58,19 @@ public class BookController {
 		return ResponseEntity.ok(service.getBooks());
 	}
 
-	@GetMapping("/{name}")
-	public ResponseEntity<?> getBook(@PathVariable String name) {
+	@GetMapping("/{id}")
+	public ResponseEntity<?> getBook(@PathVariable String id) {
 
 		try {
+			
+			if(Objects.isNull(id))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
-			Book book = service.getBook(name);
+			Book book = service.getBook(id);
 
 			if (Objects.nonNull(book))
 				return ResponseEntity.ok(book);
-
+			
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
 		} catch (IllegalArgumentException e) {
@@ -69,6 +87,9 @@ public class BookController {
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteBook(@PathVariable String id) {
+		
+		if(Objects.isNull(id))
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
 		return ResponseEntity.status(service.deleteBook(id)).build();
 	}
@@ -77,6 +98,24 @@ public class BookController {
 	public ResponseEntity<?> update(@RequestBody Book book) {
 
 		try {
+			
+			if(Objects.isNull(book))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			
+			if(Objects.isNull(book.getId()))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			
+			if(Objects.isNull(book.getName()))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			
+			if(Objects.isNull(book.getAuthor()))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			
+			if(Objects.isNull(book.getPublication()))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			
+			if(Objects.isNull(book.getPublicationYear()))
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
 			return ResponseEntity.status(service.update(book)).build();
 

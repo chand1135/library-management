@@ -29,6 +29,7 @@ public class BookServiceImpl implements BookService {
 			repository.save(book);
 			
 			return HttpStatus.CREATED;
+			
 		} catch (IllegalArgumentException e) {
 			
 			throw new IllegalArgumentException();
@@ -42,11 +43,11 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Book getBook(String name) throws IllegalArgumentException {
+	public Book getBook(String id) throws IllegalArgumentException {
 
 		try {
 
-			Optional<Book> optional = repository.findByName(name);
+			Optional<Book> optional = repository.findById(id);
 
 			if (optional.isPresent())
 				return optional.get();
@@ -83,6 +84,12 @@ public class BookServiceImpl implements BookService {
 			Book updateBook = getBook(book.getId());
 
 			if (Objects.nonNull(updateBook)) {
+				
+				if (Objects.nonNull(book.getName()))
+					updateBook.setName(book.getName());
+				
+				if (Objects.nonNull(book.getAuthor()))
+					updateBook.setAuthor(book.getAuthor());
 
 				if (Objects.nonNull(book.getPublicationYear()))
 					updateBook.setPublicationYear(book.getPublicationYear());

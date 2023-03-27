@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import org.springframework.stereotype.Component;
 
+import com.atik.librarymanagement.model.Author;
 import com.atik.librarymanagement.model.Book;
 import com.atik.librarymanagement.model.Publisher;
 import com.atik.librarymanagement.model.User;
@@ -80,6 +81,23 @@ public class Util {
 			return true;
 
 		if (Objects.isNull(publisher.getAddress()))
+			return true;
+
+		return false;
+	}
+
+	public boolean validateAuthor(Author author) {
+
+		if (Objects.isNull(author))
+			return true;
+
+		if (Objects.isNull(author.getName()))
+			return true;
+
+		if (Objects.isNull(author.getDateOfBirth()))
+			return true;
+
+		if (Objects.isNull(author.getDateOfDeath()))
 			return true;
 
 		return false;

@@ -41,7 +41,7 @@ public class Util {
 		if (Objects.isNull(user.getName()))
 			return true;
 
-		if (Objects.isNull(user.getEmail()))
+		if (Objects.isNull(user. getEmail()))
 			return true;
 
 		if (Objects.isNull(user.getPhoneNumber()))

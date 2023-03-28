@@ -10,7 +10,7 @@ import com.atik.librarymanagement.model.Book;
 @Component
 public interface BookService {
 
-	public HttpStatus create(Book book) throws IllegalArgumentException;
+	public HttpStatus create(List<Book> books) throws IllegalArgumentException;
 
 	public List<Book> getBooks();
 

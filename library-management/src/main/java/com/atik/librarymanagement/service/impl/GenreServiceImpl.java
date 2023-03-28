@@ -20,13 +20,16 @@ public class GenreServiceImpl implements GenreService {
 	private GenreRepository repository;
 
 	@Override
-	public HttpStatus create(Genre genre) throws IllegalArgumentException {
+	public HttpStatus create(List<Genre> genres) throws IllegalArgumentException {
 
 		try {
 
-			genre.setId(UUID.randomUUID().toString());
+			genres.stream().forEach(genre -> {
 
-			repository.save(genre);
+				genre.setId(UUID.randomUUID().toString());
+
+				repository.save(genre);
+			});
 
 			return HttpStatus.CREATED;
 

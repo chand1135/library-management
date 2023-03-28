@@ -20,13 +20,16 @@ public class BookServiceImpl implements BookService {
 	private BookRepository repository;
 
 	@Override
-	public HttpStatus create(Book book) throws IllegalArgumentException {
+	public HttpStatus create(List<Book> books) throws IllegalArgumentException {
 
 		try {
 
-			book.setId(UUID.randomUUID().toString());
+			books.stream().forEach(book -> {
 
-			repository.save(book);
+				book.setId(UUID.randomUUID().toString());
+
+				repository.save(book);
+			});
 
 			return HttpStatus.CREATED;
 

@@ -1,5 +1,6 @@
 package com.atik.librarymanagement.controller;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,14 @@ public class GenreController {
 	private Util util;
 
 	@PostMapping
-	public ResponseEntity<?> create(@RequestBody Genre genre) {
+	public ResponseEntity<?> create(@RequestBody List<Genre> genres) {
 
 		try {
 
-			if (util.validateGenre(genre))
+			if (util.validateGenre(genres))
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
-			return ResponseEntity.status(service.create(genre)).build();
+			return ResponseEntity.status(service.create(genres)).build();
 
 		} catch (IllegalArgumentException e) {
 

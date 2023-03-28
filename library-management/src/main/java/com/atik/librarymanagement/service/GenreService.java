@@ -10,7 +10,7 @@ import com.atik.librarymanagement.model.Genre;
 @Component
 public interface GenreService {
 
-	public HttpStatus create(Genre genre) throws IllegalArgumentException;
+	public HttpStatus create(List<Genre> genres) throws IllegalArgumentException;
 
 	public List<Genre> getGenres();
 

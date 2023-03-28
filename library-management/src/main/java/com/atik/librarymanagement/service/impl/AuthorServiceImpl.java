@@ -20,13 +20,16 @@ public class AuthorServiceImpl implements AuthorService {
 	private AuthorRepository repository;
 
 	@Override
-	public HttpStatus create(Author author) throws IllegalArgumentException {
+	public HttpStatus create(List<Author> authors) throws IllegalArgumentException {
 
 		try {
 
-			author.setId(UUID.randomUUID().toString());
+			authors.stream().forEach(author -> {
 
-			repository.save(author);
+				author.setId(UUID.randomUUID().toString());
+
+				repository.save(author);
+			});
 
 			return HttpStatus.CREATED;
 

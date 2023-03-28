@@ -10,7 +10,7 @@ import com.atik.librarymanagement.model.User;
 @Component
 public interface UserService {
 
-	public HttpStatus create(User user) throws IllegalArgumentException;
+	public HttpStatus create(List<User> users) throws IllegalArgumentException;
 
 	public List<User> getUsers();
 

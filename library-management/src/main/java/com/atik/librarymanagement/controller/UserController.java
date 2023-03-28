@@ -1,5 +1,6 @@
 package com.atik.librarymanagement.controller;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,14 @@ public class UserController {
 	private Util util;
 
 	@PostMapping
-	public ResponseEntity<?> create(@RequestBody User user) {
+	public ResponseEntity<?> create(@RequestBody List<User> users) {
 
 		try {
 
-			if (util.validateUser(user))
+			if (util.validateUser(users))
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
-			return ResponseEntity.status(service.create(user)).build();
+			return ResponseEntity.status(service.create(users)).build();
 
 		} catch (IllegalArgumentException e) {
 

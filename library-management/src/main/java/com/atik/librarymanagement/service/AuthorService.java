@@ -10,7 +10,7 @@ import com.atik.librarymanagement.model.Author;
 @Component
 public interface AuthorService {
 
-	public HttpStatus create(Author author) throws IllegalArgumentException;
+	public HttpStatus create(List<Author> authors) throws IllegalArgumentException;
 
 	public List<Author> getAuthors();
 

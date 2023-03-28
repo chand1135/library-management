@@ -19,16 +19,16 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository repository;
 
-	public HttpStatus create(User user) throws IllegalArgumentException {
+	public HttpStatus create(List<User> users) throws IllegalArgumentException {
 
 		try {
 
-//			if (repository.existsById(user.getId()))
-//				return HttpStatus.CONFLICT;
+			users.stream().forEach(user -> {
 
-			user.setId(UUID.randomUUID().toString());
+				user.setId(UUID.randomUUID().toString());
 
-			repository.save(user);
+				repository.save(user);
+			});
 
 			return HttpStatus.CREATED;
 

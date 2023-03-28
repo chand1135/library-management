@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.atik.librarymanagement.model.Author;
 import com.atik.librarymanagement.model.Book;
+import com.atik.librarymanagement.model.Genre;
 import com.atik.librarymanagement.model.Publisher;
 import com.atik.librarymanagement.model.User;
 
@@ -41,7 +42,7 @@ public class Util {
 		if (Objects.isNull(user.getName()))
 			return true;
 
-		if (Objects.isNull(user. getEmail()))
+		if (Objects.isNull(user.getEmail()))
 			return true;
 
 		if (Objects.isNull(user.getPhoneNumber()))
@@ -98,6 +99,17 @@ public class Util {
 			return true;
 
 		if (Objects.isNull(author.getDateOfDeath()))
+			return true;
+
+		return false;
+	}
+
+	public boolean validateGenre(Genre genre) {
+
+		if (Objects.isNull(genre))
+			return true;
+
+		if (Objects.isNull(genre.getName()))
 			return true;
 
 		return false;

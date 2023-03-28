@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @Document(collection = "genre")
 public class Genre {
-	
+
 	@Id
 	private String id;
 	private String name;

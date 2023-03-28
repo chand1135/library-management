@@ -77,14 +77,32 @@ public class BookServiceImpl implements BookService {
 
 			if (Objects.nonNull(updateBook)) {
 
-				if (Objects.nonNull(book.getName()))
-					updateBook.setName(book.getName());
+				if (Objects.nonNull(book.getTitle()))
+					updateBook.setTitle(book.getTitle());
 
 				if (Objects.nonNull(book.getAuthor()))
 					updateBook.setAuthor(book.getAuthor());
 
+				if (Objects.nonNull(book.getPrice()))
+					updateBook.setPrice(book.getPrice());
+
+				if (Objects.nonNull(book.getTitle()))
+					updateBook.setTitle(book.getTitle());
+
+				if (Objects.nonNull(book.getIsbn()))
+					updateBook.setIsbn(book.getIsbn());
+
 				if (Objects.nonNull(book.getPublicationYear()))
 					updateBook.setPublicationYear(book.getPublicationYear());
+
+				if (Objects.nonNull(book.getPublisherId()))
+					updateBook.setPublisherId(book.getPublisherId());
+
+				if (Objects.nonNull(book.getGenre()))
+					updateBook.setGenre(book.getGenre());
+
+				if (Objects.nonNull(book.getCopies()))
+					updateBook.setCopies(book.getCopies());
 
 			}
 

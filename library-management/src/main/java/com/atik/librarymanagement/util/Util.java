@@ -19,16 +19,31 @@ public class Util {
 		if (Objects.isNull(book))
 			return true;
 
-		if (Objects.isNull(book.getName()))
+		if (Objects.isNull(book.getTitle()))
 			return true;
 
 		if (Objects.isNull(book.getAuthor()))
 			return true;
 
-		if (Objects.isNull(book.getPublication()))
+		if (Objects.isNull(book.getPrice()))
+			return true;
+
+		if (Objects.isNull(book.getIsbn()))
 			return true;
 
 		if (Objects.isNull(book.getPublicationYear()))
+			return true;
+
+		if (Objects.isNull(book.getPublisherId()))
+			return true;
+
+		if (Objects.isNull(book.getNumberOfPages()))
+			return true;
+
+		if (Objects.isNull(book.getGenre()))
+			return true;
+
+		if (Objects.isNull(book.getCopies()))
 			return true;
 
 		return false;

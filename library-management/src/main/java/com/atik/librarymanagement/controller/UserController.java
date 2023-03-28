@@ -69,12 +69,6 @@ public class UserController {
 
 	}
 
-	@DeleteMapping
-	public ResponseEntity<?> deleteUsers() {
-
-		return ResponseEntity.status(service.deleteUsers()).build();
-	}
-
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable String id) {
 

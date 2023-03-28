@@ -16,8 +16,6 @@ public interface BookService {
 
 	public Book getBook(String id) throws IllegalArgumentException;
 
-	public HttpStatus deleteBooks();
-
 	public HttpStatus deleteBook(String id);
 
 	public HttpStatus update(Book book) throws IllegalArgumentException;

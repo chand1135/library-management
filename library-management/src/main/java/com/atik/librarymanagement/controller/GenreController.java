@@ -14,29 +14,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atik.librarymanagement.model.Book;
-import com.atik.librarymanagement.service.BookService;
+import com.atik.librarymanagement.model.Genre;
+import com.atik.librarymanagement.service.GenreService;
 import com.atik.librarymanagement.util.Util;
 
 @RestController
-@RequestMapping(path = { "/api/v1/book" })
-public class BookController {
+@RequestMapping(path = { "/api/v1/genre" })
+public class GenreController {
 
 	@Autowired
-	private BookService service;
+	private GenreService service;
 
 	@Autowired
 	private Util util;
 
 	@PostMapping
-	public ResponseEntity<?> create(@RequestBody Book book) {
+	public ResponseEntity<?> create(@RequestBody Genre genre) {
 
 		try {
 
-			if (util.validateBook(book))
+			if (util.validateGenre(genre))
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
-			return ResponseEntity.status(service.create(book)).build();
+			return ResponseEntity.status(service.create(genre)).build();
 
 		} catch (IllegalArgumentException e) {
 
@@ -45,23 +45,23 @@ public class BookController {
 	}
 
 	@GetMapping
-	public ResponseEntity<?> getBooks() {
+	public ResponseEntity<?> getGenres() {
 
-		return ResponseEntity.ok(service.getBooks());
+		return ResponseEntity.ok(service.getGenres());
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getBook(@PathVariable String id) {
+	public ResponseEntity<?> getGenre(@PathVariable String id) {
 
 		try {
 
 			if (Objects.isNull(id))
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
-			Book book = service.getBook(id);
+			Genre genre = service.getGenre(id);
 
-			if (Objects.nonNull(book))
-				return ResponseEntity.ok(book);
+			if (Objects.nonNull(genre))
+				return ResponseEntity.ok(genre);
 
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
@@ -72,29 +72,27 @@ public class BookController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteBook(@PathVariable String id) {
+	public ResponseEntity<?> deleteGenre(@PathVariable String id) {
 
 		if (Objects.isNull(id))
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
-		return ResponseEntity.status(service.deleteBook(id)).build();
+		return ResponseEntity.status(service.deleteGenre(id)).build();
 	}
 
 	@PutMapping
-	public ResponseEntity<?> update(@RequestBody Book book) {
+	public ResponseEntity<?> updateGenre(@RequestBody Genre genre) {
 
 		try {
 
-			if (util.validateBook(book))
+			if (util.validateGenre(genre))
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
-			return ResponseEntity.status(service.update(book)).build();
+			return ResponseEntity.status(service.update(genre)).build();
 
 		} catch (IllegalArgumentException e) {
 
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
-
 	}
-
 }

@@ -67,15 +67,6 @@ public class PublisherServiceImpl implements PublisherService {
 	}
 
 	@Override
-	public HttpStatus deletePublishers() {
-
-		repository.deleteAll();
-
-		return HttpStatus.NO_CONTENT;
-
-	}
-
-	@Override
 	public HttpStatus deletePublisher(String id) {
 
 		repository.deleteById(id);

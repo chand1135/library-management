@@ -16,8 +16,6 @@ public interface PublisherService {
 
 	public Publisher getPublisher(String id) throws IllegalArgumentException;
 
-	public HttpStatus deletePublishers();
-
 	public HttpStatus deletePublisher(String id);
 
 	public HttpStatus update(Publisher publisher) throws IllegalArgumentException;

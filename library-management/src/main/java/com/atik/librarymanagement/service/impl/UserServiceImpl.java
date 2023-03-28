@@ -60,13 +60,6 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	public HttpStatus deleteUsers() {
-
-		repository.deleteAll();
-
-		return HttpStatus.NO_CONTENT;
-	}
-
 	public HttpStatus deleteUser(String id) {
 
 		repository.deleteById(id);

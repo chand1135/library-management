@@ -71,12 +71,6 @@ public class BookController {
 		}
 	}
 
-	@DeleteMapping
-	public ResponseEntity<?> deleteBooks() {
-
-		return ResponseEntity.status(service.deleteBooks()).build();
-	}
-
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteBook(@PathVariable String id) {
 

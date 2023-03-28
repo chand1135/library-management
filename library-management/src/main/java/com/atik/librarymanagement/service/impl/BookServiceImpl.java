@@ -61,14 +61,6 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public HttpStatus deleteBooks() {
-
-		repository.deleteAll();
-
-		return HttpStatus.NO_CONTENT;
-	}
-
-	@Override
 	public HttpStatus deleteBook(String id) {
 
 		repository.deleteById(id);

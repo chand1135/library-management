@@ -71,12 +71,6 @@ public class PublisherController {
 		}
 	}
 
-	@DeleteMapping
-	public ResponseEntity<?> deletePublishers() {
-
-		return ResponseEntity.status(service.deletePublishers()).build();
-	}
-
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deletePublisher(@PathVariable String id) {
 

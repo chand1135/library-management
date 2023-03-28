@@ -16,8 +16,6 @@ public interface UserService {
 
 	public User getUser(String id) throws IllegalArgumentException;
 
-	public HttpStatus deleteUsers();
-
 	public HttpStatus deleteUser(String id);
 
 	public HttpStatus update(User user) throws IllegalArgumentException;

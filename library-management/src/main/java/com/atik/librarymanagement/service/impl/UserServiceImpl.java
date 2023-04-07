@@ -7,11 +7,16 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.atik.librarymanagement.exception.RecordNotFoundException;
+import com.atik.librarymanagement.model.Role;
 import com.atik.librarymanagement.model.User;
 import com.atik.librarymanagement.repository.UserRepository;
+import com.atik.librarymanagement.service.RoleService;
 import com.atik.librarymanagement.service.UserService;
+import com.atik.librarymanagement.util.Constant;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -19,15 +24,41 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository repository;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private RoleService roleService;
+
 	public HttpStatus create(List<User> users) throws IllegalArgumentException {
 
 		try {
 
 			users.stream().forEach(user -> {
 
-				user.setId(UUID.randomUUID().toString());
+				if (Objects.nonNull(user.getEmail())) {
 
-				repository.save(user);
+					user.setId(UUID.randomUUID().toString());
+
+					Optional<User> optional = repository.findByEmail(user.getEmail());
+
+					if (!optional.isPresent()) {
+
+						user.setPassword(passwordEncoder.encode(user.getPassword().trim()));
+
+						user.setEmail(user.getEmail().trim().toLowerCase());
+
+						Role role = roleService.getByName(user.getRole().trim());
+
+						user.setRole(role.getId());
+
+						repository.save(user);
+
+					} else
+						throw new RecordNotFoundException(Constant.EMAIL_ALREADY_EXISTS);
+
+				} else
+					throw new RecordNotFoundException(Constant.INVALID_EMAIL);
 			});
 
 			return HttpStatus.CREATED;
@@ -48,6 +79,23 @@ public class UserServiceImpl implements UserService {
 		try {
 
 			Optional<User> optional = repository.findById(id);
+
+			if (optional.isPresent())
+				return optional.get();
+
+			return null;
+
+		} catch (IllegalArgumentException e) {
+
+			throw new IllegalArgumentException();
+		}
+	}
+
+	public User getUserByEmail(String email) {
+
+		try {
+
+			Optional<User> optional = repository.findByEmail(email);
 
 			if (optional.isPresent())
 				return optional.get();

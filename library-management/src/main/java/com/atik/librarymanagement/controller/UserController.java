@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +31,7 @@ public class UserController {
 	private Util util;
 
 	@PostMapping
+	@PreAuthorize("hasAuthority('admin')")
 	public ResponseEntity<?> create(@RequestBody List<User> users) {
 
 		try {
@@ -46,12 +48,14 @@ public class UserController {
 	}
 
 	@GetMapping
+	@PreAuthorize("hasAuthority('admin') or hasAuthority('user') or hasAuthority('modifier')")
 	public ResponseEntity<?> getUsers() {
 
 		return ResponseEntity.ok(service.getUsers());
 	}
 
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('admin') or hasAuthority('user') or hasAuthority('modifier')")
 	public ResponseEntity<?> getUser(@PathVariable String id) {
 
 		try {
@@ -71,12 +75,14 @@ public class UserController {
 	}
 
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasAuthority('admin')")
 	public ResponseEntity<?> deleteUser(@PathVariable String id) {
 
 		return ResponseEntity.status(service.deleteUser(id)).build();
 	}
 
 	@PutMapping
+	@PreAuthorize("hasAuthority('admin') or hasAuthority('modifier')")
 	public ResponseEntity<?> update(@RequestBody User user) {
 
 		try {

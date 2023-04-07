@@ -8,10 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atik.librarymanagement.service.BlacklistedJwtTokenService;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @RestController
 @RequestMapping(path = { "/api/v1/black-listed-token" })
 public class BlacklistedJwtTokenController {

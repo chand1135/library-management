@@ -1,13 +1,8 @@
 package com.atik.librarymanagement.util;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @Component
 public class JsonResponseUtil {
 

@@ -13,10 +13,6 @@ import com.atik.librarymanagement.model.Role;
 import com.atik.librarymanagement.repository.RoleRepository;
 import com.atik.librarymanagement.service.RoleService;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @Service
 public class RoleServiceImpl implements RoleService {
 

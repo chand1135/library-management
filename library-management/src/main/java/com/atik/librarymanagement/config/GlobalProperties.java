@@ -5,10 +5,6 @@ import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @Getter
 @Component
 public class GlobalProperties {

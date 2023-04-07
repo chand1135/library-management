@@ -15,10 +15,6 @@ import com.atik.librarymanagement.exception.RecordNotFoundException;
 import com.atik.librarymanagement.model.Authentication;
 import com.atik.librarymanagement.service.AuthenticationService;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @RestController
 @RequestMapping(path = { "/api/v1" })
 public class AuthenticationController {

@@ -7,10 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.atik.librarymanagement.model.BlacklistedJwtToken;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @Repository
 public interface BlacklistedJwtTokenRepository extends MongoRepository<BlacklistedJwtToken, String> {
 

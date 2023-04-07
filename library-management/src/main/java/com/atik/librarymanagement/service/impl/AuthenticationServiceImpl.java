@@ -32,10 +32,6 @@ import com.atik.librarymanagement.util.Constant;
 import com.atik.librarymanagement.util.JsonResponseUtil;
 import com.mongodb.client.MongoDatabase;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService, UserDetailsService {
 
@@ -127,7 +123,8 @@ public class AuthenticationServiceImpl implements AuthenticationService, UserDet
 
 				authorities.add(new SimpleGrantedAuthority(roleService.getById(user.getRole()).getName()));
 
-				return new org.springframework.security.core.userdetails.User(user.getId(), user.getPassword(), authorities);
+				return new org.springframework.security.core.userdetails.User(user.getId(), user.getPassword(),
+						authorities);
 			}
 
 			return null;

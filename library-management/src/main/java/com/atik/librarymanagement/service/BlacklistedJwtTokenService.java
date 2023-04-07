@@ -5,10 +5,6 @@ import org.springframework.stereotype.Component;
 
 import com.atik.librarymanagement.model.BlacklistedJwtToken;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @Component
 @Qualifier("BlacklistedJwtTokenService")
 public interface BlacklistedJwtTokenService {

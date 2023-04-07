@@ -22,10 +22,6 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.atik.librarymanagement.service.AuthenticationService;
 import com.atik.librarymanagement.service.BlacklistedJwtTokenService;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 

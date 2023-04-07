@@ -7,10 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.atik.librarymanagement.model.Role;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @Repository
 public interface RoleRepository extends MongoRepository<Role, String> {
 

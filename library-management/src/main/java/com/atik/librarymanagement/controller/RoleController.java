@@ -18,10 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.atik.librarymanagement.model.Role;
 import com.atik.librarymanagement.service.RoleService;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @RestController
 @RequestMapping(path = { "/api/v1/role" })
 public class RoleController {

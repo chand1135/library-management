@@ -2,10 +2,6 @@ package com.atik.librarymanagement.model;
 
 import lombok.Data;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @Data
 public class Authentication {
 

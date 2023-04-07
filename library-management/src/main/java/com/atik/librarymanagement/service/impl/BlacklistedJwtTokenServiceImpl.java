@@ -11,10 +11,6 @@ import com.atik.librarymanagement.repository.BlacklistedJwtTokenRepository;
 import com.atik.librarymanagement.service.BlacklistedJwtTokenService;
 import com.atik.librarymanagement.util.Constant;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @Service
 public class BlacklistedJwtTokenServiceImpl implements BlacklistedJwtTokenService {
 

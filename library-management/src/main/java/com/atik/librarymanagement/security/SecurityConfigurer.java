@@ -18,10 +18,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.atik.librarymanagement.service.impl.AuthenticationServiceImpl;
 
-/**
- * @author Mohammad Enayatullah
- *
- */
 @SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity

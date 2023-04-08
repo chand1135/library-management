@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atik.librarymanagement.model.Author;
 import com.atik.librarymanagement.service.AuthorService;
-import com.atik.librarymanagement.util.Util;
+import com.atik.librarymanagement.util.Validation;
 
 @RestController
 @RequestMapping(path = { "/api/v1/author" })
@@ -27,7 +27,7 @@ public class AuthorController {
 	private AuthorService service;
 
 	@Autowired
-	private Util util;
+	private Validation util;
 
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody List<Author> authors) {

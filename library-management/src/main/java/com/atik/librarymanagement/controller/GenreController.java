@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atik.librarymanagement.model.Genre;
 import com.atik.librarymanagement.service.GenreService;
-import com.atik.librarymanagement.util.Util;
+import com.atik.librarymanagement.util.Validation;
 
 @RestController
 @RequestMapping(path = { "/api/v1/genre" })
@@ -27,7 +27,7 @@ public class GenreController {
 	private GenreService service;
 
 	@Autowired
-	private Util util;
+	private Validation util;
 
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody List<Genre> genres) {

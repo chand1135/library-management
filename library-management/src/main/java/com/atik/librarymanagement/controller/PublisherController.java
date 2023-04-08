@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atik.librarymanagement.model.Publisher;
 import com.atik.librarymanagement.service.PublisherService;
-import com.atik.librarymanagement.util.Util;
+import com.atik.librarymanagement.util.Validation;
 
 @RestController
 @RequestMapping(path = { "/api/v1/publisher" })
@@ -27,7 +27,7 @@ public class PublisherController {
 	private PublisherService service;
 
 	@Autowired
-	private Util util;
+	private Validation util;
 
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody List<Publisher> publishers) {

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.atik.librarymanagement.model.User;
 import com.atik.librarymanagement.service.UserService;
-import com.atik.librarymanagement.util.Util;
+import com.atik.librarymanagement.util.Validation;
 
 @RestController
 @RequestMapping(path = { "/api/v1/user" })
@@ -28,7 +28,7 @@ public class UserController {
 	private UserService service;
 
 	@Autowired
-	private Util util;
+	private Validation util;
 
 	@PostMapping
 	@PreAuthorize("hasAuthority('admin')")

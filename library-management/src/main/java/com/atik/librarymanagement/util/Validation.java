@@ -12,9 +12,9 @@ import com.atik.librarymanagement.model.Publisher;
 import com.atik.librarymanagement.model.User;
 
 @Component
-public class Util {
+public class Validation {
 
-	public boolean validateBook(List<Book> books) {
+	public boolean book(List<Book> books) {
 
 		for (var i = 0; i < books.size(); i++) {
 

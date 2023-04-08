@@ -9,7 +9,7 @@ public class JsonResponseUtil {
 	public static String getResponse(String token, String name) {
 
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("message", token);
+		jsonObject.put("token", token);
 		jsonObject.put("name", name);
 		return jsonObject.toString();
 	}

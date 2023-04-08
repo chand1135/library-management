@@ -1,6 +1,6 @@
 # Library Management
 
-This is a Spring Boot project that provides a RESTful API for managing a library's book inventory using Apache Tomcat 9, Java 17, and MongoDB.
+This is a Spring Boot project that provides a RESTful API for managing a library's book inventory using Apache Tomcat 9, Java 11, and MongoDB.
 
 ## Installation
 
@@ -63,7 +63,7 @@ We welcome contributions to the Library Management project! To contribute:
 
 ## Acknowledgements
 
-- Spring Boot
+- Spring Boot 2.7.6
 - Apache Tomcat 9
-- Java 17 or higher
+- Java 11 or higher
 - MongoDB

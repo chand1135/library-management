@@ -15,6 +15,8 @@ public interface AuthorService {
 	public List<Author> getAuthors();
 
 	public Author getAuthor(String id) throws IllegalArgumentException;
+	
+	public Author getAuthorByName(String name) throws IllegalArgumentException;
 
 	public HttpStatus deleteAuthor(String id);
 

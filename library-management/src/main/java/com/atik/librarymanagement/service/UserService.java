@@ -6,11 +6,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import com.atik.librarymanagement.model.User;
+import com.atik.librarymanagement.model.UserRequest;
 
 @Component
 public interface UserService {
 
-	public HttpStatus create(List<User> users) throws IllegalArgumentException;
+	public HttpStatus create(List<UserRequest> userRequest) throws IllegalArgumentException;
 
 	public List<User> getUsers();
 

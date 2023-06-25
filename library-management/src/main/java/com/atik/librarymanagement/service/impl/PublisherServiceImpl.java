@@ -26,7 +26,8 @@ public class PublisherServiceImpl implements PublisherService {
 
 			publishers.stream().forEach(publisher -> {
 
-				publisher.setId(UUID.randomUUID().toString());
+				if (Objects.isNull(publisher.getId()))
+					publisher.setId(UUID.randomUUID().toString());
 
 				repository.save(publisher);
 			});
@@ -53,6 +54,25 @@ public class PublisherServiceImpl implements PublisherService {
 		try {
 
 			Optional<Publisher> optional = repository.findById(id);
+
+			if (optional.isPresent())
+				return optional.get();
+
+			return null;
+
+		} catch (IllegalArgumentException e) {
+
+			throw new IllegalArgumentException();
+		}
+
+	}
+
+	@Override
+	public Publisher getPublisherByName(String name) throws IllegalArgumentException {
+
+		try {
+
+			Optional<Publisher> optional = repository.findByName(name);
 
 			if (optional.isPresent())
 				return optional.get();

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.atik.librarymanagement.exception.RecordNotFoundException;
 import com.atik.librarymanagement.model.Role;
 import com.atik.librarymanagement.model.User;
+import com.atik.librarymanagement.model.UserRequest;
 import com.atik.librarymanagement.repository.UserRepository;
 import com.atik.librarymanagement.service.RoleService;
 import com.atik.librarymanagement.service.UserService;
@@ -30,29 +31,31 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private RoleService roleService;
 
-	public HttpStatus create(List<User> users) throws IllegalArgumentException {
+	@Override
+	public HttpStatus create(List<UserRequest> userRequests) throws IllegalArgumentException {
 
 		try {
 
-			users.stream().forEach(user -> {
+			userRequests.stream().forEach(userRequest -> {
 
-				if (Objects.nonNull(user.getEmail())) {
+				if (Objects.nonNull(userRequest.getEmail())) {
 
-					user.setId(UUID.randomUUID().toString());
-
-					Optional<User> optional = repository.findByEmail(user.getEmail());
+					Optional<User> optional = repository.findByEmail(userRequest.getEmail());
 
 					if (!optional.isPresent()) {
 
-						user.setPassword(passwordEncoder.encode(user.getPassword().trim()));
+						Role role = roleService.getByName(userRequest.getRoleName().trim());
 
-						user.setEmail(user.getEmail().trim().toLowerCase());
+						if (Objects.nonNull(role) && Objects.nonNull(role.getId()))
 
-						Role role = roleService.getByName(user.getRole().trim());
+							repository.save(User.builder().id(UUID.randomUUID().toString()).name(userRequest.getName())
+									.email(userRequest.getEmail())
+									.password(passwordEncoder.encode(userRequest.getPassword().trim()))
+									.phoneNumber(userRequest.getPhoneNumber()).address(userRequest.getAddress())
+									.roleId(role.getId()).build());
 
-						user.setRole(role.getId());
-
-						repository.save(user);
+						else
+							throw new RecordNotFoundException(Constant.ROLE_NOT_FOUND);
 
 					} else
 						throw new RecordNotFoundException(Constant.EMAIL_ALREADY_EXISTS);
@@ -71,7 +74,14 @@ public class UserServiceImpl implements UserService {
 
 	public List<User> getUsers() {
 
-		return repository.findAll();
+		var users = repository.findAll();
+
+		users.stream().forEach(user -> {
+
+			user.setPassword(null);
+		});
+
+		return users;
 	}
 
 	public User getUser(String id) throws IllegalArgumentException {

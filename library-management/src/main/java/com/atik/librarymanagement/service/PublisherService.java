@@ -20,4 +20,6 @@ public interface PublisherService {
 
 	public HttpStatus update(Publisher publisher) throws IllegalArgumentException;
 
+	public Publisher getPublisherByName(String publisherName);
+
 }

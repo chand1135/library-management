@@ -6,11 +6,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import com.atik.librarymanagement.model.Book;
+import com.atik.librarymanagement.model.BookRequest;
 
 @Component
 public interface BookService {
 
-	public HttpStatus create(List<Book> books) throws IllegalArgumentException;
+	public HttpStatus create(List<BookRequest> books) throws IllegalArgumentException;
 
 	public List<Book> getBooks();
 

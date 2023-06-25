@@ -104,7 +104,7 @@ public class AuthenticationServiceImpl implements AuthenticationService, UserDet
 
 			Set<GrantedAuthority> authorities = new HashSet<>();
 
-			authorities.add(new SimpleGrantedAuthority(roleService.getById(user.getRole()).getName()));
+			authorities.add(new SimpleGrantedAuthority(roleService.getById(user.getRoleId()).getName()));
 
 			return new org.springframework.security.core.userdetails.User(user.getId(), user.getPassword(),
 					authorities);
@@ -121,7 +121,7 @@ public class AuthenticationServiceImpl implements AuthenticationService, UserDet
 
 				Set<GrantedAuthority> authorities = new HashSet<>();
 
-				authorities.add(new SimpleGrantedAuthority(roleService.getById(user.getRole()).getName()));
+				authorities.add(new SimpleGrantedAuthority(roleService.getById(user.getRoleId()).getName()));
 
 				return new org.springframework.security.core.userdetails.User(user.getId(), user.getPassword(),
 						authorities);

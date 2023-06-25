@@ -26,7 +26,8 @@ public class AuthorServiceImpl implements AuthorService {
 
 			authors.stream().forEach(author -> {
 
-				author.setId(UUID.randomUUID().toString());
+				if (Objects.isNull(author.getId()))
+					author.setId(UUID.randomUUID().toString());
 
 				repository.save(author);
 			});
@@ -51,6 +52,24 @@ public class AuthorServiceImpl implements AuthorService {
 		try {
 
 			Optional<Author> optional = repository.findById(id);
+
+			if (optional.isPresent())
+				return optional.get();
+
+			return null;
+
+		} catch (IllegalArgumentException e) {
+
+			throw new IllegalArgumentException();
+		}
+	}
+
+	@Override
+	public Author getAuthorByName(String name) throws IllegalArgumentException {
+
+		try {
+
+			Optional<Author> optional = repository.findByName(name);
 
 			if (optional.isPresent())
 				return optional.get();

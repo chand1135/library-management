@@ -15,4 +15,8 @@ public class Author {
 	private String dateOfBirth;
 	private String dateOfDeath;
 
+	public Author(String id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 }

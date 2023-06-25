@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.atik.librarymanagement.model.Book;
+import com.atik.librarymanagement.model.BookRequest;
 import com.atik.librarymanagement.service.BookService;
 import com.atik.librarymanagement.util.Validation;
 
@@ -30,11 +31,11 @@ public class BookController {
 	private Validation util;
 
 	@PostMapping
-	public ResponseEntity<?> create(@RequestBody List<Book> books) {
+	public ResponseEntity<?> create(@RequestBody List<BookRequest> books) {
 
 		try {
 
-			if (util.book(books))
+			if (util.validateBook(books))
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
 			return ResponseEntity.status(service.create(books)).build();

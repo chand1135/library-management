@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.atik.librarymanagement.model.User;
+import com.atik.librarymanagement.model.UserRequest;
 import com.atik.librarymanagement.service.UserService;
 import com.atik.librarymanagement.util.Validation;
 
@@ -32,14 +33,14 @@ public class UserController {
 
 	@PostMapping
 	@PreAuthorize("hasAuthority('admin')")
-	public ResponseEntity<?> create(@RequestBody List<User> users) {
+	public ResponseEntity<?> create(@RequestBody List<UserRequest> userRequest) {
 
 		try {
 
-			if (util.validateUser(users))
+			if (util.validateUser(userRequest))
 				return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 
-			return ResponseEntity.status(service.create(users)).build();
+			return ResponseEntity.status(service.create(userRequest)).build();
 
 		} catch (IllegalArgumentException e) {
 

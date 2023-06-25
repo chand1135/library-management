@@ -16,6 +16,8 @@ public interface GenreService {
 
 	public Genre getGenre(String id) throws IllegalArgumentException;
 
+	public Genre getGenreByName(String name) throws IllegalArgumentException;
+
 	public HttpStatus deleteGenre(String id);
 
 	public HttpStatus update(Genre genre) throws IllegalArgumentException;

@@ -26,7 +26,8 @@ public class GenreServiceImpl implements GenreService {
 
 			genres.stream().forEach(genre -> {
 
-				genre.setId(UUID.randomUUID().toString());
+				if (Objects.isNull(genre.getId()))
+					genre.setId(UUID.randomUUID().toString());
 
 				repository.save(genre);
 			});
@@ -52,6 +53,24 @@ public class GenreServiceImpl implements GenreService {
 		try {
 
 			Optional<Genre> optional = repository.findById(id);
+
+			if (optional.isPresent())
+				return optional.get();
+
+			return null;
+
+		} catch (IllegalArgumentException e) {
+
+			throw new IllegalArgumentException();
+		}
+	}
+
+	@Override
+	public Genre getGenreByName(String name) throws IllegalArgumentException {
+
+		try {
+
+			Optional<Genre> optional = repository.findByName(name);
 
 			if (optional.isPresent())
 				return optional.get();

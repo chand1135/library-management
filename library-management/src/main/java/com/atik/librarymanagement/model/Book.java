@@ -18,15 +18,12 @@ public class Book {
 	private String id;
 	private String title;
 	private String authorId;
-	private String authorName;
 	private String isbn;
 	private Double price;
 	private Year publicationYear;
 	private String publisherId;
-	private String publisherName;
 	private Integer numberOfPages;
 	private List<String> genreIds;
-	private List<String> genreNames;
 	private List<Copy> copies;
 	private Integer copiesCount;
 }

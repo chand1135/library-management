@@ -11,6 +11,7 @@ import com.atik.librarymanagement.model.BookRequest;
 import com.atik.librarymanagement.model.Genre;
 import com.atik.librarymanagement.model.Publisher;
 import com.atik.librarymanagement.model.User;
+import com.atik.librarymanagement.model.UserRequest;
 
 @Component
 public class Validation {
@@ -63,9 +64,6 @@ public class Validation {
 		if (Objects.isNull(book.getTitle()))
 			return true;
 
-		if (Objects.isNull(book.getAuthorName()))
-			return true;
-
 		if (Objects.isNull(book.getPrice()))
 			return true;
 
@@ -81,20 +79,17 @@ public class Validation {
 		if (Objects.isNull(book.getNumberOfPages()))
 			return true;
 
-		if (Objects.isNull(book.getGenreNames()))
-			return true;
-
 		if (Objects.isNull(book.getCopies()))
 			return true;
 
 		return false;
 	}
 
-	public boolean validateUser(List<User> users) {
+	public boolean validateUser(List<UserRequest> userRequest) {
 
-		for (var i = 0; i < users.size(); i++) {
+		for (var i = 0; i < userRequest.size(); i++) {
 
-			User user = users.get(i);
+			UserRequest user = userRequest.get(i);
 
 			if (Objects.isNull(user))
 				return true;

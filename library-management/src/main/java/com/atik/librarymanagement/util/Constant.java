@@ -39,6 +39,7 @@ public class Constant {
 	public static final String USER_NOT_UPDATED_PROVIDE_ROLE = "Not updated, please provide valid role name";
 	public static final String USER_NOT_CREATED_PROVIDE_ROLE = "Not created, please provide valid role name";
 	public static final String INVALID_EMAIL = "Please provide valid email id";
+	public static final String ROLE_NOT_FOUND = "Role not found";
 
 	/*
 	 * Resource

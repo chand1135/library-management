@@ -71,10 +71,9 @@ public class BookServiceImpl implements BookService {
 				else {
 
 					book = Book.builder().id(UUID.randomUUID().toString()).title(bookRequest.getTitle())
-							.authorName(bookRequest.getAuthorName()).isbn(bookRequest.getIsbn())
-							.price(bookRequest.getPrice()).publicationYear(bookRequest.getPublisherYear())
-							.publisherName(bookRequest.getPublisherName()).numberOfPages(bookRequest.getNumberOfPages())
-							.genreNames(bookRequest.getGenreNames()).copies(bookRequest.getCopies())
+							.isbn(bookRequest.getIsbn()).price(bookRequest.getPrice())
+							.publicationYear(bookRequest.getPublisherYear())
+							.numberOfPages(bookRequest.getNumberOfPages()).copies(bookRequest.getCopies())
 							.copiesCount(bookRequest.getCopies().size()).build();
 
 					Author author = authorService.getAuthorByName(bookRequest.getAuthorName());

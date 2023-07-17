@@ -75,7 +75,7 @@ public class RoleController {
 
 	@GetMapping
 	@PreAuthorize("hasAuthority('admin') or hasAuthority('user') or hasAuthority('modifier')")
-	public ResponseEntity<?> gets() {
+	public ResponseEntity<?> getRoles() {
 
 		var userList = service.getRoles();
 

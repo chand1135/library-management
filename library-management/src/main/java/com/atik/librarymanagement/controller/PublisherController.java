@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +31,7 @@ public class PublisherController {
 	private Validation util;
 
 	@PostMapping
+	@PreAuthorize("hasAuthority('admin')")
 	public ResponseEntity<?> create(@RequestBody List<Publisher> publishers) {
 
 		try {
@@ -47,6 +49,7 @@ public class PublisherController {
 	}
 
 	@GetMapping
+	@PreAuthorize("hasAuthority('admin') or hasAuthority('user') or hasAuthority('modifier')")
 	public ResponseEntity<?> getPublishers() {
 
 		return ResponseEntity.ok(service.getPublishers());
@@ -54,6 +57,7 @@ public class PublisherController {
 	}
 
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('admin') or hasAuthority('user') or hasAuthority('modifier')")
 	public ResponseEntity<?> getPublisher(@PathVariable String id) {
 
 		try {
@@ -72,12 +76,14 @@ public class PublisherController {
 	}
 
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasAuthority('admin')")
 	public ResponseEntity<?> deletePublisher(@PathVariable String id) {
 
 		return ResponseEntity.status(service.deletePublisher(id)).build();
 	}
 
 	@PutMapping
+	@PreAuthorize("hasAuthority('admin') or hasAuthority('modifier')")
 	public ResponseEntity<?> updatePublisher(@RequestBody Publisher publisher) {
 
 		try {

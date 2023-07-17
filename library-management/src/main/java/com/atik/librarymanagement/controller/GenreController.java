@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +31,7 @@ public class GenreController {
 	private Validation util;
 
 	@PostMapping
+	@PreAuthorize("hasAuthority('admin')")
 	public ResponseEntity<?> create(@RequestBody List<Genre> genres) {
 
 		try {
@@ -46,12 +48,14 @@ public class GenreController {
 	}
 
 	@GetMapping
+	@PreAuthorize("hasAuthority('admin') or hasAuthority('user') or hasAuthority('modifier')")
 	public ResponseEntity<?> getGenres() {
 
 		return ResponseEntity.ok(service.getGenres());
 	}
 
 	@GetMapping("/{id}")
+	@PreAuthorize("hasAuthority('admin') or hasAuthority('user') or hasAuthority('modifier')")
 	public ResponseEntity<?> getGenre(@PathVariable String id) {
 
 		try {
@@ -73,6 +77,7 @@ public class GenreController {
 	}
 
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasAuthority('admin')")
 	public ResponseEntity<?> deleteGenre(@PathVariable String id) {
 
 		if (Objects.isNull(id))
@@ -82,6 +87,7 @@ public class GenreController {
 	}
 
 	@PutMapping
+	@PreAuthorize("hasAuthority('admin') or hasAuthority('modifier')")
 	public ResponseEntity<?> updateGenre(@RequestBody Genre genre) {
 
 		try {
